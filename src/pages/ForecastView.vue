@@ -14,11 +14,12 @@ const {
    isLoading,
    isError,
 } = useQuery({
-   queryKey: ["forecast", coordinates.latitude, coordinates.longitude],
-   queryFn: async () => {
-      console.log("load");
-      return await WeatherService.getForecast();
-   },
+   queryKey: ["forecast", coordinates],
+   queryFn: async () =>
+      await WeatherService.getForecast(
+         coordinates.latitude,
+         coordinates.longitude,
+      ),
    select(data): ForecastResponse<ForecastWeather[][]> {
       if (!data) {
          return data;
@@ -36,6 +37,8 @@ const {
       }
    },
 });
+
+
 </script>
 
 <template>

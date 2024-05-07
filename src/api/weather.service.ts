@@ -1,14 +1,9 @@
-import { useStore } from "@/stores/root.store";
 import type {
    ForecastResponse,
    ForecastWeather,
    WeatherResponse,
 } from "@/types/weatherType";
 import axios from "axios";
-
-const {
-   coordsStore: { coordinates },
-} = useStore();
 
 const weather = axios.create({
    baseURL: "https://api.openweathermap.org/data/2.5/",
@@ -21,23 +16,26 @@ const weather = axios.create({
    },
 });
 
-let params = "";
-function setParams() {
-   params = `?lat=${coordinates.latitude}&lon=${coordinates.longitude}`;
-}
-
 export const WeatherService = {
-   async getCurrent() {
-      setParams();
-      const res = await weather.get<WeatherResponse>(`weather${params}`);
+   async getCurrent(lat: number, lon: number) {
+      const res = await weather.get<WeatherResponse>(`weather`, {
+         params: {
+            lat: lat,
+            lon: lon,
+         },
+      });
       return res.data;
    },
-   async getForecast() {
-      setParams();
+   async getForecast(lat: number, lon: number) {
       const res = await weather.get<ForecastResponse<ForecastWeather[]>>(
-         `forecast${params}`,
+         `forecast`,
+         {
+            params: {
+               lat: lat,
+               lon: lon,
+            },
+         },
       );
-      console.log(res.data);
       return res.data;
    },
 };

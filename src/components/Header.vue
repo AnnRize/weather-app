@@ -13,12 +13,10 @@ import { RouterLink } from "vue-router";
 
 <style module lang="scss" scoped>
 .header {
-   max-width: 320px;
-   padding: 50px;
-   border-right: 2px solid white;
+   padding: 20px;
+   border-bottom: 2px solid white;
    display: flex;
-   align-items: center;
-   max-height: 100vh;
+   justify-content: center;
    position: sticky;
    top: 0;
    background: linear-gradient(
@@ -29,10 +27,25 @@ import { RouterLink } from "vue-router";
 
    .nav {
       display: flex;
-      flex-direction: column;
       gap: 50px;
       font-size: 2rem;
-      width: min-content;
+
+      > a {
+         position: relative;
+         &::after {
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            content: "";
+            height: 2px;
+            width: 0;
+            background-color: black;
+            transition: 0.2s ease-in-out;
+         }
+         &:hover::after {
+            width: 100%;
+         }
+      }
    }
 }
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {  RouterView } from "vue-router";
+import { RouterView } from "vue-router";
 import Header from "./components/Header.vue";
 </script>
 
@@ -15,7 +15,6 @@ import Header from "./components/Header.vue";
 <style lang="scss" module scoped>
 .container {
    min-height: 100vh;
-   display: flex;
 
    main {
       flex: 1;

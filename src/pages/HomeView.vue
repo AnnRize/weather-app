@@ -1,15 +1,24 @@
 <script lang="ts" setup>
 import { WeatherService } from "@/api/weather.service";
 import WeatherCard from "@/components/WeatherCard.vue";
+import { useStore } from "@/stores/root.store";
 import { useQuery } from "@tanstack/vue-query";
+
+const {
+   coordsStore: { coordinates },
+} = useStore();
 
 const {
    data: weather,
    isLoading,
    isError,
 } = useQuery({
-   queryKey: ["current"],
-   queryFn: async () => await WeatherService.getCurrent(),
+   queryKey: ["current", coordinates],
+   queryFn: async () =>
+      await WeatherService.getCurrent(
+         coordinates.latitude,
+         coordinates.longitude,
+      ),
 });
 </script>
 
@@ -23,7 +32,7 @@ const {
 
 <style lang="scss" module scoped>
 .container {
-   min-height: 100vh;
+   min-height: calc(100vh - 82px);
    display: flex;
    justify-content: center;
    align-items: center;
