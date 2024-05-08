@@ -27,8 +27,10 @@ import { RouterLink } from "vue-router";
 
    .nav {
       display: flex;
+      align-items: center;
+      text-align: center;
       gap: 50px;
-      font-size: 2rem;
+      font-size: 1.5rem;
 
       > a {
          position: relative;
@@ -42,8 +44,17 @@ import { RouterLink } from "vue-router";
             background-color: black;
             transition: 0.2s ease-in-out;
          }
-         &:hover::after {
-            width: 100%;
+      }
+   }
+}
+
+@media (hover: hover) {
+   .header {
+      .nav {
+         > a {
+            &:hover::after {
+               width: 100%;
+            }
          }
       }
    }

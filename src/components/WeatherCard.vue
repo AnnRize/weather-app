@@ -10,6 +10,7 @@ interface WeatherCardProps {
 
 <script lang="ts" setup>
 import type { WeatherResponse } from "@/types/weatherType";
+import { getTemp } from "@/utils/getTemp";
 
 const { weather } = defineProps<WeatherCardProps>();
 </script>
@@ -18,7 +19,7 @@ const { weather } = defineProps<WeatherCardProps>();
    <div :class="$style.card">
       <div :class="$style.city">{{ weather.name }}</div>
       <div :class="$style.tempWrapper">
-         <p :class="$style.temp">{{ Math.round(weather.main.temp) }}&deg</p>
+         <p :class="$style.temp">{{ getTemp(weather.main.temp) }}&deg</p>
          <div :class="$style.imgWrapper">
             <img
                :src="`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`"
@@ -31,7 +32,8 @@ const { weather } = defineProps<WeatherCardProps>();
                {{ weather.weather[0].description }}
             </p>
             <p :class="$style.feelsLike">
-               Ощущается как {{ Math.round(weather.main.feels_like) }}&deg
+               Ощущается как
+               {{ getTemp(weather.main.feels_like) }}&deg
             </p>
          </div>
       </div>
@@ -58,6 +60,8 @@ const { weather } = defineProps<WeatherCardProps>();
    );
    box-shadow: -4px 4px rgba(255, 173, 0, 0.4), -8px 8px rgba(255, 173, 0, 0.3),
       -12px 12px rgba(255, 173, 0, 0.2);
+      margin-left: 12px;
+      margin-bottom: 12px;
 
    .city {
       font-size: 2rem;
@@ -70,6 +74,7 @@ const { weather } = defineProps<WeatherCardProps>();
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
 
       .temp {
          font-size: 2.8rem;

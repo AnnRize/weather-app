@@ -29,7 +29,6 @@ const { day } = defineProps<ForecastDayProps>();
          :src="`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
          :alt="day.weather[0].description"
          :title="day.weather[0].description"
-         width="80"
       />
       <div :class="$style.description">
          {{ day.weather[0].description }}
@@ -43,25 +42,29 @@ const { day } = defineProps<ForecastDayProps>();
 </template>
 
 <style module lang="scss" scoped>
-// .row {
-//    text-align: center;
-
 .tempWrapper {
-   // grid-area: temp;
    display: flex;
    gap: 10px;
    flex-wrap: wrap;
+   justify-content: center;
 }
 
 .descriptionWrapper {
-   // grid-area: desc;
    display: flex;
    flex-wrap: wrap;
    align-items: center;
-   justify-content: start;
+   justify-content: center;
 
-   .description::first-letter {
-      text-transform: uppercase;
+   >img{
+      max-width: 80px;
+      width: 100%;
+   }
+
+   .description {
+      text-align: center;
+      &::first-letter {
+         text-transform: uppercase;
+      }
    }
 }
 
@@ -77,5 +80,16 @@ const { day } = defineProps<ForecastDayProps>();
 .feelsLike {
    justify-self: center;
 }
-// }
+
+@media (max-width: 620px) {
+   .descriptionWrapper {
+
+   .description {
+      display: none;
+   }
+}
+   .feelsLike {
+      display: none;
+   }
+}
 </style>
