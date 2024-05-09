@@ -1,18 +1,11 @@
-<script lang="ts">
-export default {
-   inheritAttrs: false,
-};
+<script lang="ts" setup>
+import type { ForecastResponse, ForecastWeather } from "@/types/weatherType";
+import { timestampToDate } from "@/utils/timestampToDate";
+import ForecastDay from "./ForecastDay.vue";
 
 interface ForecastProps {
    forecast: ForecastResponse<ForecastWeather[][]>;
 }
-</script>
-
-<script lang="ts" setup>
-import { timestampToDate } from "@/utils/timestampToDate";
-
-import type { ForecastResponse, ForecastWeather } from "@/types/weatherType";
-import ForecastDay from "./ForecastDay.vue";
 
 const { forecast } = defineProps<ForecastProps>();
 </script>
@@ -25,7 +18,6 @@ const { forecast } = defineProps<ForecastProps>();
          :key="index"
       >
          <div :class="$style.grid">
-            <!-- <div :class="$style.thead"> -->
             <div :class="$style.date">
                <span :class="$style.day">
                   {{ timestampToDate(list[0]?.dt).split(" ")[0] }}
@@ -111,10 +103,6 @@ const { forecast } = defineProps<ForecastProps>();
          .descText + img {
             display: none;
          }
-
-         // > tr > th:not(:nth-child(2)) {
-         //    padding-inline: 10px;
-         // }
       }
    }
 }

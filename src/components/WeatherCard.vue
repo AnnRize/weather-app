@@ -1,16 +1,10 @@
-<script lang="ts">
-export default {
-   inheritAttrs: false,
-};
+<script lang="ts" setup>
+import type { WeatherResponse } from "@/types/weatherType";
+import { getTemp } from "@/utils/getTemp";
 
 interface WeatherCardProps {
    weather: WeatherResponse;
 }
-</script>
-
-<script lang="ts" setup>
-import type { WeatherResponse } from "@/types/weatherType";
-import { getTemp } from "@/utils/getTemp";
 
 const { weather } = defineProps<WeatherCardProps>();
 </script>
@@ -60,8 +54,8 @@ const { weather } = defineProps<WeatherCardProps>();
    );
    box-shadow: -4px 4px rgba(255, 173, 0, 0.4), -8px 8px rgba(255, 173, 0, 0.3),
       -12px 12px rgba(255, 173, 0, 0.2);
-      margin-left: 12px;
-      margin-bottom: 12px;
+   margin-left: 12px;
+   margin-bottom: 12px;
 
    .city {
       font-size: 2rem;

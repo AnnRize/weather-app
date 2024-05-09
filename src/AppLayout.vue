@@ -15,9 +15,5 @@ import Header from "./components/Header.vue";
 <style lang="scss" module scoped>
 .container {
    min-height: 100vh;
-
-   main {
-      flex: 1;
-   }
 }
 </style>

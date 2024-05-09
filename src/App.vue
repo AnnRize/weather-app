@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { RouterView } from "vue-router";
 import { useStore } from "./stores/root.store";
-import { onMounted } from "vue";
 
 const {
    coordsStore: { coordinates },

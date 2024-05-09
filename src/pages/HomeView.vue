@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import { useQuery } from "@tanstack/vue-query";
+import { useStore } from "@/stores/root.store";
 import { WeatherService } from "@/api/weather.service";
 import WeatherCard from "@/components/WeatherCard.vue";
-import { useStore } from "@/stores/root.store";
-import { useQuery } from "@tanstack/vue-query";
 
 const {
    coordsStore: { coordinates },

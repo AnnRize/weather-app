@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-   <div>error</div>
+   <div>Page not Found!</div>
 </template>
 
 <style scoped></style>

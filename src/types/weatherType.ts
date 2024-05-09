@@ -70,8 +70,6 @@ interface Weather {
    icon: string;
 }
 
-
-
 export interface ForecastWeather {
    dt: number;
    main: {

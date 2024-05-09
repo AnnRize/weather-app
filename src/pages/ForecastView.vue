@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useQuery } from "@tanstack/vue-query";
+import { useStore } from "@/stores/root.store";
 import { WeatherService } from "@/api/weather.service";
 import ForecastList from "@/components/ForecastList.vue";
-import { useStore } from "@/stores/root.store";
 import type { ForecastResponse, ForecastWeather } from "@/types/weatherType";
-import { useQuery } from "@tanstack/vue-query";
 
 const {
    coordsStore: { coordinates },
@@ -25,10 +25,12 @@ const {
          return data;
       } else {
          let newList: ForecastWeather[][] = [];
+
          let listObject = Object.groupBy(
             data.list,
             ({ dt_txt }) => dt_txt.split(" ")[0],
          );
+
          for (const key in listObject) {
             newList.push(listObject[key]!);
          }
@@ -37,8 +39,6 @@ const {
       }
    },
 });
-
-
 </script>
 
 <template>

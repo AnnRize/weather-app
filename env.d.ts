@@ -6,12 +6,6 @@ declare module "*.vue" {
    export default component;
 }
 
-// declare module "*.vue" {
-//    import { defineComponent } from "vue";
-//    const Component: ReturnType<typeof defineComponent>;
-//    export default Component;
-//  }
-
 interface ObjectConstructor {
    /**
     * Groups members of an iterable according to the return value of the passed callback.
@@ -28,7 +22,3 @@ interface ImportMetaEnv {
    readonly VITE_APP_ID_DEV: string;
    readonly VITE_APP_ID_PROD: string;
 }
-
-// interface ImportMeta {
-//    readonly env: ImportMetaEnv;
-// }

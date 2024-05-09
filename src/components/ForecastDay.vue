@@ -1,23 +1,16 @@
-<script lang="ts">
-export default {
-   inheritAttrs: false,
-};
-
-interface ForecastDayProps {
-   day: ForecastWeather;
-}
-</script>
-
 <script lang="ts" setup>
 import type { ForecastWeather } from "@/types/weatherType";
 import { getTemp } from "@/utils/getTemp";
 import { timestampToTime } from "@/utils/timestampToTime";
 
+interface ForecastDayProps {
+   day: ForecastWeather;
+}
+
 const { day } = defineProps<ForecastDayProps>();
 </script>
 
 <template>
-   <!-- <div :class="$style.row"> -->
    <div :class="$style.tempWrapper">
       <p>
          {{ timestampToTime(day.dt) }}
@@ -38,7 +31,6 @@ const { day } = defineProps<ForecastDayProps>();
    <div :class="$style.humidity">{{ day.main.humidity }}%</div>
    <div :class="$style.wind">{{ day.wind.speed }}</div>
    <div :class="$style.feelsLike">{{ getTemp(day.main.feels_like) }}&deg</div>
-   <!-- </div> -->
 </template>
 
 <style module lang="scss" scoped>
@@ -55,7 +47,7 @@ const { day } = defineProps<ForecastDayProps>();
    align-items: center;
    justify-content: center;
 
-   >img{
+   > img {
       max-width: 80px;
       width: 100%;
    }
@@ -83,11 +75,10 @@ const { day } = defineProps<ForecastDayProps>();
 
 @media (max-width: 620px) {
    .descriptionWrapper {
-
-   .description {
-      display: none;
+      .description {
+         display: none;
+      }
    }
-}
    .feelsLike {
       display: none;
    }
