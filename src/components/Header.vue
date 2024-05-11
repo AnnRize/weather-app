@@ -14,48 +14,41 @@ import { RouterLink } from "vue-router";
 <style module lang="scss" scoped>
 .header {
    padding: 20px;
-   border-bottom: 2px solid white;
+   border-bottom: var(--sm-border);
    display: flex;
    justify-content: center;
    position: sticky;
    top: 0;
-   background: linear-gradient(
-      45deg,
-      rgba(255, 0, 204, 1) 0%,
-      rgba(255, 173, 0, 1) 100%
-   );
+   background: var(--header-background);
+}
 
-   .nav {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      gap: 50px;
-      font-size: 1.5rem;
+.nav {
+   display: flex;
+   align-items: center;
+   text-align: center;
+   gap: 50px;
+   font-size: 1.5rem;
 
-      > a {
-         position: relative;
-         &::after {
-            left: 0;
-            bottom: 0;
-            position: absolute;
-            content: "";
-            height: 2px;
-            width: 0;
-            background-color: black;
-            transition: 0.2s ease-in-out;
-         }
+   > a {
+      position: relative;
+
+      &::after {
+         left: 0;
+         bottom: 0;
+         position: absolute;
+         content: "";
+         height: 2px;
+         width: 0;
+         background-color: var(--primary-clr);
+         transition: 0.2s ease-in-out;
       }
    }
 }
 
 @media (hover: hover) {
-   .header {
-      .nav {
-         > a {
-            &:hover::after {
-               width: 100%;
-            }
-         }
+   .nav {
+      > a:hover::after {
+         width: 100%;
       }
    }
 }

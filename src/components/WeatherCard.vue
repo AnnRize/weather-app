@@ -43,96 +43,92 @@ const { weather } = defineProps<WeatherCardProps>();
 
 <style module lang="scss" scoped>
 .card {
+   color: var(--secondary-clr);
    display: flex;
    flex-direction: column;
-   border-radius: 20px;
+   border-radius: var(--m-borderR);
    padding: 20px;
-   background: linear-gradient(
-      200deg,
-      rgba(255, 0, 204, 1) 0%,
-      rgba(255, 173, 0, 1) 100%
-   );
-   box-shadow: -4px 4px rgba(255, 173, 0, 0.4), -8px 8px rgba(255, 173, 0, 0.3),
-      -12px 12px rgba(255, 173, 0, 0.2);
+   background: var(--weatherCard-background);
+   box-shadow: var(--weatherCard-boxShadow);
    margin-left: 12px;
    margin-bottom: 12px;
+}
 
-   .city {
-      font-size: 2rem;
-      text-align: center;
+.city {
+   font-size: 2rem;
+   text-align: center;
+}
+
+.tempWrapper {
+   width: fit-content;
+   margin: 50px auto;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+
+   .temp {
+      font-size: 2.8rem;
    }
 
-   .tempWrapper {
-      width: fit-content;
-      margin: 50px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
+   .imgWrapper {
+      max-width: 100px;
 
-      .temp {
-         font-size: 2.8rem;
-      }
-
-      .imgWrapper {
-         max-width: 100px;
-
-         > img {
-            width: 100%;
-         }
-      }
-
-      .descriptionWrapper {
-         display: flex;
-         flex-direction: column;
-
-         .description {
-            &::first-letter {
-               text-transform: uppercase;
-            }
-         }
-
-         .feelsLike {
-            opacity: 0.7;
-         }
+      > img {
+         width: 100%;
       }
    }
 
-   @mixin weather($url) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-
-      &::before {
-         display: block;
-         content: "";
-         width: 30px;
-         height: 30px;
-         background: url($url);
-         background-size: cover;
-         background-position: center;
-         background-repeat: no-repeat;
-      }
-   }
-
-   .weatherWrapper {
+   .descriptionWrapper {
       display: flex;
       flex-direction: column;
-      gap: 10px;
 
-      .wind {
-         @include weather("/wind.svg");
+      .description {
+         &::first-letter {
+            text-transform: uppercase;
+         }
       }
-      .humidity {
-         @include weather("/humidity.svg");
+
+      .feelsLike {
+         opacity: 0.7;
       }
-      .pressure {
-         @include weather("/pressure.svg");
-      }
-      .clouds {
-         @include weather("/clouds.svg");
-      }
+   }
+}
+
+@mixin weather($url) {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 5px;
+
+   &::before {
+      display: block;
+      content: "";
+      width: 30px;
+      height: 30px;
+      background: url($url);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+   }
+}
+
+.weatherWrapper {
+   display: flex;
+   flex-direction: column;
+   gap: var(--sm-gap);
+
+   .wind {
+      @include weather("/wind.svg");
+   }
+   .humidity {
+      @include weather("/humidity.svg");
+   }
+   .pressure {
+      @include weather("/pressure.svg");
+   }
+   .clouds {
+      @include weather("/clouds.svg");
    }
 }
 </style>

@@ -51,7 +51,7 @@ const {
 
 <style lang="scss" module scoped>
 .container {
-   min-height: 100vh;
+   min-height: calc(--container-minH);
    display: flex;
    justify-content: center;
    align-items: center;

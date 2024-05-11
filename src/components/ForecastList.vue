@@ -56,81 +56,76 @@ const { forecast } = defineProps<ForecastProps>();
 .forecastList {
    display: flex;
    flex-direction: column;
-   gap: 20px;
+   gap: var(--m-gap);
+}
+.tableWrapper {
+   padding: 20px;
+   border: var(--sm-border);
+   border-radius: var(--m-borderR);
+   box-shadow: inset 0 0 20px rgb(0, 0, 0);
+}
+.grid {
+   text-align: center;
+   display: grid;
+   width: 100%;
+   grid-template-columns: auto 1fr repeat(4, auto);
+   align-items: center;
+   column-gap: var(--sm-gap);
+   grid-auto-rows: auto;
 
-   .tableWrapper {
-      padding: 20px;
-      border: 2px solid rgb(255, 255, 255);
-      border-radius: 20px;
-      box-shadow: inset 0 0 20px rgb(0, 0, 0);
-
-      .grid {
-         text-align: center;
-         display: grid;
-         width: 100%;
-         grid-template-columns: auto 1fr repeat(4, auto);
-         align-items: center;
-         column-gap: 15px;
-         grid-auto-rows: auto;
-
-         .date {
-            text-align: left;
-            grid-column: span 2;
-            color: rgb(223, 38, 38);
-            .day {
-               font-size: 2rem;
-            }
-         }
-         .pressure {
-            justify-self: center;
-         }
-         .humidity {
-            justify-self: center;
-         }
-         .wind {
-            justify-self: center;
-         }
-         .feelsLike {
-            justify-self: center;
-         }
-
-         .space {
-            grid-column: span 6;
-            padding-top: 10px;
-            border-bottom: 2px solid white;
-         }
-
-         .descText + img {
-            display: none;
-         }
+   .date {
+      text-align: left;
+      grid-column: span 2;
+      color: var(--date-clr);
+      .day {
+         font-size: 2rem;
       }
+   }
+   .pressure {
+      justify-self: center;
+   }
+   .humidity {
+      justify-self: center;
+   }
+   .wind {
+      justify-self: center;
+   }
+   .feelsLike {
+      justify-self: center;
+   }
+
+   .space {
+      grid-column: span 6;
+      padding-top: 10px;
+      border-bottom: var(--sm-border);
+   }
+
+   .descText + img {
+      display: none;
    }
 }
 
 @media (max-width: 620px) {
-   .forecastList {
-      .tableWrapper {
-         padding-inline: 10px;
+   .tableWrapper {
+      padding-inline: 10px;
+   }
+   .grid {
+      display: grid;
+      grid-template-columns: auto 1fr repeat(3, auto);
+      column-gap: var(--sm-gap);
 
-         .grid {
-            display: grid;
-            grid-template-columns: auto 1fr repeat(3, auto);
-            column-gap: 10px;
-
-            .descText {
-               display: none;
-               + img {
-                  display: block;
-               }
-            }
-
-            .feelsLike {
-               display: none;
-            }
-            .space {
-               grid-column: span 5;
-            }
+      .descText {
+         display: none;
+         + img {
+            display: block;
          }
+      }
+
+      .feelsLike {
+         display: none;
+      }
+      .space {
+         grid-column: span 5;
       }
    }
 }

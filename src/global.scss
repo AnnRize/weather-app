@@ -1,6 +1,21 @@
 :root {
-   background-color: #1e1e1e;
-   color: #fff;
+   --primary-clr: #1e1e1e;
+   --secondary-clr: #fff;
+   --date-clr: #df2626;
+
+   --container-minH: calc(100vh - 82px);
+   --sm-border: 2px solid #fff;
+   --m-borderR: 20px;
+   --m-gap: 20px;
+   --sm-gap: 10px;
+
+   --weatherCard-background: linear-gradient(200deg, rgba(255, 0, 204, 1) 0%, rgba(255, 173, 0, 1) 100%);
+   --weatherCard-boxShadow: -4px 4px rgba(255, 173, 0, 0.4), -8px 8px rgba(255, 173, 0, 0.3),
+      -12px 12px rgba(255, 173, 0, 0.2);
+   --header-background: linear-gradient(45deg, rgba(255, 0, 204, 1) 0%, rgba(255, 173, 0, 1) 100%);
+
+   background-color: var(--primary-clr);
+   color: var(--secondary-clr);
    font-size: 1.1rem;
 }
 

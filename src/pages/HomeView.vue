@@ -32,7 +32,7 @@ const {
 
 <style lang="scss" module scoped>
 .container {
-   min-height: calc(100vh - 82px);
+   min-height: var(--container-minH);
    display: flex;
    justify-content: center;
    align-items: center;

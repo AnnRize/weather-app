@@ -36,7 +36,7 @@ const { day } = defineProps<ForecastDayProps>();
 <style module lang="scss" scoped>
 .tempWrapper {
    display: flex;
-   gap: 10px;
+   gap: var(--sm-gap);
    flex-wrap: wrap;
    justify-content: center;
 }
@@ -74,10 +74,8 @@ const { day } = defineProps<ForecastDayProps>();
 }
 
 @media (max-width: 620px) {
-   .descriptionWrapper {
-      .description {
-         display: none;
-      }
+   .description {
+      display: none;
    }
    .feelsLike {
       display: none;
