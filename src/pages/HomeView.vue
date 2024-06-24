@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/vue-query";
 import { useStore } from "@/stores/root.store";
 import { WeatherService } from "@/api/weather.service";
 import WeatherCard from "@/components/WeatherCard.vue";
+import { weatherBackgrounds } from "@/utils/weatherBackgrounds";
 
 const {
    coordsStore: { coordinates },
@@ -25,7 +26,16 @@ const {
 <template>
    <div v-if="isLoading">Loading...</div>
    <div v-else-if="isError">Error</div>
-   <div v-else-if="weather" :class="$style.container">
+   <div
+      v-else-if="weather"
+      :class="$style.container"
+      :style="{
+         background: `url(${weatherBackgrounds[weather.weather[0].main]})`,
+         backgroundRepeat: `no-repeat`,
+         backgroundSize: `cover`,
+         backgroundPosition: `center`,
+      }"
+   >
       <WeatherCard :weather="weather" />
    </div>
 </template>

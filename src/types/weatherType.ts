@@ -65,7 +65,7 @@ export interface ForecastResponse<T> {
 
 interface Weather {
    id: number;
-   main: weatherMain | string;
+   main: weatherMain;
    description: string;
    icon: string;
 }
